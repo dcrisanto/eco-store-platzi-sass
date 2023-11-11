@@ -1,0 +1,516 @@
+$primary-color: #ffefe7; //expresiones de tipo hexadecimal
+$secondary-color: #ffdac6;
+$tertiary-color: #babd8d;
+$primary-text-color: #7c6a0a;
+$quaternary-text-color: #fa9500;
+$button-text-color: white;
+$font-stack: "IBM Plex Sans", sans-serif; //expresiones de tipografía
+$sm: 1.4rem; // expresiones en números
+$md: 1.6rem;
+$lg: 1.8rem;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin flex($direction, $content, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+}
+
+@mixin buttonStyle($width, $height, $border, $background, $color, $radius) {
+  width: $width;
+  height: $height;
+  border: $border;
+  background: $background;
+  color: $color;
+  border-radius: $radius;
+}
+
+@mixin text($size, $weight, $align, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  text-align: $align;
+  color: $color;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $primary-color;
+  font-family: $font-stack;
+}
+
+header {
+  @include flex(row, center, center);
+  width: 100%;
+}
+
+nav {
+  @include flex(row, space-between, center);
+  width: 90%;
+  height: 32px;
+  padding: 22px 0;
+
+  p {
+    @include text(2rem, 400, justify, $primary-text-color);
+  }
+
+  .menu-btn {
+    @include buttonStyle(32px, 32px, none, none, none, none);
+  }
+
+  .menu-icon,
+  .user-icon,
+  .wishList-icon,
+  .shopping-cart-icon {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .menu-icon {
+    background-image: url("../assets/icons/menu.svg");
+  }
+
+  .btns-container {
+    display: none;
+  }
+}
+
+main {
+  @include flex(column, center, center);
+  width: 100%;
+  padding: 16px;
+
+  article {
+    @include flex(column, center, center);
+    width: 90vw;
+    gap: 16px;
+
+    .description-container {
+      @include flex(column, center, start);
+      gap: 10px;
+      h1 {
+        @include text(2.8rem, 600, justify, $primary-text-color);
+      }
+      .description {
+        @include text(1.2rem, 400, justify, $primary-text-color);
+      }
+      .learn-more-btn {
+        @include buttonStyle(
+          150px,
+          42px,
+          none,
+          $quaternary-text-color,
+          $button-text-color,
+          20px
+        );
+        align-self: center;
+      }
+    }
+
+    .ecology-img-container {
+      width: 336px;
+      height: 362px;
+      .ecology-img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .products-section {
+    @include flex(column, center, center);
+    width: 90vw;
+    gap: 30px;
+
+    .health-care-title {
+      @include text(2.2rem, 500, justify, $primary-text-color);
+      padding: 16px 0;
+    }
+
+    .home-decoration-title {
+      @extend .health-care-title;
+    }
+
+    .health-care-cards-container {
+      @include flex(row, space-evenly, inherit);
+      flex-wrap: wrap;
+      gap: 5px;
+      .health-care-card {
+        @include flex(column, center, center);
+        width: 160px;
+        gap: 10px;
+        background-color: $secondary-color;
+      }
+    }
+
+    .home-decoration-cards-container {
+      @extend .health-care-cards-container;
+      .home-decoration-card {
+        @extend .health-care-card;
+        background-color: $tertiary-color;
+      }
+    }
+
+    .heart-icon {
+      width: 31px;
+      height: 31px;
+      align-self: end;
+    }
+
+    .data-product-container {
+      width: 132px;
+    }
+
+    .data-product-container p {
+      @include text($sm, 200, justify, $primary-text-color);
+    }
+
+    .name-product {
+      font-weight: 600;
+    }
+
+    .description-product {
+      font-weight: 400;
+    }
+
+    .product-image {
+      width: 132px;
+      height: 164px;
+    }
+  }
+
+  .about-us-section {
+    @include flex(column, center, center);
+    width: 90vw;
+    margin-top: 16px;
+
+    .us-title {
+      @include text(2.2rem, 500, start, $primary-text-color);
+      width: 100%;
+    }
+
+    .earth-ecology-container {
+      @extend .about-us-section;
+      padding: 0 30px;
+      .earth-container,
+      .ecology-container {
+        @extend .about-us-section;
+        width: 50%;
+        img {
+          width: 73px;
+          height: 73px;
+        }
+        p {
+          @include text($sm, 500, center, #e86424);
+        }
+      }
+    }
+  }
+
+  .gallery-section {
+    @include flex(column, center, center);
+    width: 90vw;
+    margin: 16px;
+    gap: 20px;
+
+    h2 {
+      @include text(2rem, 500, start, $primary-text-color);
+      width: 100%;
+    }
+
+    .imgs-gallery-container {
+      @include flex(column, center, center);
+      gap: 20px;
+      img {
+        width: 296px;
+        height: 297px;
+      }
+    }
+  }
+
+  .map-section {
+    @include flex(column, start, start);
+    width: 90vw;
+    margin: 16px;
+    gap: 20px;
+
+    h2 {
+      @include text(2.2rem, 500, start, $primary-text-color);
+    }
+
+    img {
+      width: 330px;
+      height: 480px;
+    }
+
+    .name {
+      $font-size: 2rem;
+      font-size: $font-size;
+    }
+
+    .address {
+      $font-size: 1.5rem;
+      font-size: $font-size;
+    }
+
+    .name,
+    .address {
+      $color: #e86424;
+      color: $color;
+      font-weight: 400;
+    }
+  }
+}
+
+footer {
+  @include flex(column, space-between, start);
+  gap: 15px;
+  margin-top: 20px;
+  height: 316px;
+  background-color: $quaternary-text-color;
+  padding: 16px;
+
+  p {
+    $color: white;
+    color: $color;
+  }
+
+  p:first-child {
+    $font-size: 2.1rem;
+    font-size: $font-size;
+  }
+
+  .social-media-container {
+    display: flex;
+    gap: 15px;
+  }
+
+  .social-media-container img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (min-width: 500px) {
+  header {
+    height: 135px;
+    align-items: center;
+    nav {
+      max-width: 1300px;
+      p {
+        $font-size: 3rem;
+        font-size: $font-size;
+      }
+
+      .menu-btn {
+        display: none;
+      }
+
+      .btns-container {
+        display: block;
+        .user-btn,
+        .wishList-btn,
+        .shopping-cart-btn {
+          @include buttonStyle(51px, 51px, none, none, none, none);
+        }
+        .user-icon {
+          background-image: url("../assets/icons/profile.svg");
+        }
+
+        .wishList-icon {
+          background-image: url("../assets/icons/heart.svg");
+        }
+
+        .shopping-cart-icon {
+          background-image: url("../assets/icons/shopping-cart.svg");
+        }
+      }
+    }
+  }
+
+  main {
+    article {
+      margin-top: 20px;
+      max-width: 1300px;
+      flex-direction: row-reverse;
+
+      .description-container {
+        width: 50%;
+        gap: 40px;
+        h1 {
+          $font-size: 4rem;
+          font-size: $font-size;
+        }
+        .description {
+          $font-size: 2.5rem;
+          font-size: $font-size;
+        }
+        .learn-more-btn {
+          @include buttonStyle(
+            none,
+            73px,
+            none,
+            $quaternary-text-color,
+            $button-text-color,
+            35px
+          );
+          align-self: flex-start;
+          max-width: 261px;
+          min-width: 200px;
+          font-size: $lg;
+        }
+      }
+
+      .ecology-img-container {
+        width: 50%;
+        height: 686px;
+        .ecology-img {
+          width: 100%;
+          height: 686px;
+        }
+      }
+    }
+
+    .products-section {
+      max-width: 1300px;
+
+      .health-care-title {
+        $font-size: 5rem;
+        font-size: $font-size;
+        font-weight: 400;
+      }
+
+      .home-decoration-title {
+        @extend .health-care-title;
+      }
+
+      .health-care-cards-container {
+        gap: 60px;
+        .health-care-card {
+          width: 324px;
+        }
+      }
+
+      .home-decoration-cards-container {
+        @extend .health-care-cards-container;
+        .home-decoration-card {
+          @extend .health-care-card;
+        }
+      }
+
+      .data-product-container {
+        width: 241px;
+      }
+
+      .data-product-container p {
+        font-size: $md;
+      }
+
+      .product-image {
+        width: 241px;
+        height: 299px;
+      }
+    }
+
+    .about-us-section {
+      width: 100%;
+      max-width: 1300px;
+
+      p {
+        $font-size: 5rem;
+        font-size: $font-size;
+      }
+
+      .earth-ecology-container {
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 90px;
+        .earth-container,
+        .ecology-container {
+          width: 40%;
+          flex-direction: row;
+          p {
+            @include text(2rem, 500, center, #e86424);
+          }
+
+          img {
+            max-width: 164px;
+            max-height: 164px;
+          }
+        }
+      }
+    }
+
+    .gallery-section {
+      width: 100%;
+      max-width: 1300px;
+
+      h2 {
+        $font-size: 5rem;
+        font-size: $font-size;
+      }
+
+      .imgs-gallery-container {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        img {
+          max-width: 396px;
+          min-width: 100px;
+          max-height: 398px;
+        }
+      }
+    }
+
+    .map-section {
+      width: 100%;
+      max-width: 1300px;
+
+      h2 {
+        $font-size: 5rem;
+        font-size: $font-size;
+      }
+
+      img {
+        max-width: 1300px;
+        min-width: 450px;
+        height: 596px;
+      }
+
+      .social-media-container {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  main {
+    .about-us-section {
+      .earth-ecology-container {
+        .earth-container,
+        .ecology-container {
+          img {
+            width: 164px;
+            height: 164px;
+          }
+        }
+      }
+    }
+    .map-section {
+      img {
+        min-width: 700px;
+      }
+    }
+  }
+}
