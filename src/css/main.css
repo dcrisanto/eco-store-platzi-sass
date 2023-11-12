@@ -104,6 +104,9 @@ main article .description-container .learn-more-btn {
   border-radius: 20px;
   align-self: center;
 }
+main article .description-container .learn-more-btn:hover {
+  transform: scale(1.1);
+}
 main article .ecology-img-container {
   width: 336px;
   height: 362px;
@@ -235,6 +238,10 @@ main .gallery-section .imgs-gallery-container {
 main .gallery-section .imgs-gallery-container img {
   width: 296px;
   height: 297px;
+  border-radius: 12px;
+}
+main .gallery-section .imgs-gallery-container img:hover {
+  transform: scale(1.1);
 }
 main .map-section {
   display: flex;
@@ -252,8 +259,7 @@ main .map-section h2 {
   color: #7c6a0a;
 }
 main .map-section img {
-  width: 330px;
-  height: 480px;
+  width: 80vw;
 }
 main .map-section .name {
   font-size: 2rem;
@@ -429,12 +435,13 @@ main .about-us-section .earth-ecology-container .ecology-container img {
   main .gallery-section .imgs-gallery-container {
     width: 100%;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   main .gallery-section .imgs-gallery-container img {
     max-width: 396px;
     min-width: 100px;
     max-height: 398px;
+    border-radius: 16px;
   }
   main .map-section {
     width: 100%;
@@ -443,13 +450,8 @@ main .about-us-section .earth-ecology-container .ecology-container img {
   main .map-section h2 {
     font-size: 5rem;
   }
-  main .map-section img {
-    max-width: 1300px;
-    min-width: 450px;
-    height: 596px;
-  }
-  main .map-section .social-media-container {
-    justify-content: center;
+  footer .social-media-container {
+    align-self: center;
   }
 }
 @media (min-width: 800px) {
@@ -457,8 +459,5 @@ main .about-us-section .earth-ecology-container .ecology-container img {
 main .about-us-section .earth-ecology-container .ecology-container img {
     width: 164px;
     height: 164px;
-  }
-  main .map-section img {
-    min-width: 700px;
   }
 }/*# sourceMappingURL=main.css.map */
